@@ -1,0 +1,22 @@
+swagger: "2.0"
+info:
+  title: "Logging POC"
+  description: ""
+  version: "1.0.0"
+# This field will be replaced by the deploy_api.sh script.
+host: "gcp-logging-poc-314817.appspot.com"
+schemes:
+  - "https"
+
+paths:
+  '/start':
+    get:
+      description: Start the log chain
+      operationId: "logGenerator"
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: A message
+          schema:
+            type: string

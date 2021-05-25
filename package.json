@@ -1,0 +1,24 @@
+{
+  "name": "gcp-logging-poc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://chsegala@github.com/chsegala/gcp-logging-poc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chsegala/gcp-logging-poc/issues"
+  },
+  "homepage": "https://github.com/chsegala/gcp-logging-poc#readme",
+  "scripts": {
+  },
+  "dependencies": {
+    "@google-cloud/logging": "^9.3.0"
+  }
+}
