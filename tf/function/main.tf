@@ -5,14 +5,22 @@ resource "google_cloudfunctions_function" "function" {
   project     = "gcp-logging-poc-314817"
   region      = "us-east1"
 
-  source_repository {
-      url = "https://source.developers.google.com/projects/gcp-logging-poc-314817/repos/gcp-logging-poc/master/paths/src/${var.functionName}"
-  }
+  source_archive_bucket = var.bucket.name
+  source_archive_object = var.archive.name
 
   available_memory_mb = 128
-  trigger_http        = true
-  entry_point         = "main"
-  ingress_settings    = "ALLOW_ALL"
+  trigger_http        = var.trigger_http
+
+  entry_point      = var.functionName
+  ingress_settings = "ALLOW_ALL"
+
+  dynamic "event_trigger" {
+    for_each = var.event_trigger != null ? [1] : []
+    content {
+      event_type = var.event_trigger.event_type
+      resource   = var.event_trigger.resource
+    }
+  }
 }
 
 # IAM entry for all users to invoke the function
